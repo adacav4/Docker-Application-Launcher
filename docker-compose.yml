@@ -1,0 +1,6 @@
+version: '3.0'
+
+services:
+  hadoop-service:
+    image: sequenceid/hadoop-docker:2.4.1
+    command: /etc/bootstrap.sh -d -bash
