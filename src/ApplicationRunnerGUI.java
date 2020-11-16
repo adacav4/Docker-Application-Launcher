@@ -30,9 +30,9 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    java.awt.Desktop.getDesktop().browse(new java.net.URI("http://192.168.0.201:8787"));
+                    java.awt.Desktop.getDesktop().browse(new java.net.URI("http://localhost:8787"));
                 } catch (Exception e1) {
-                    System.out.println("Could not open RStudio!");
+                    System.out.println(e1 + ": Could not open RStudio!");
                 } 
             }
         }); 
