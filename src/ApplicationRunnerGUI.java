@@ -1,9 +1,7 @@
-import java.awt.event.*; 
-import java.awt.*; 
-import java.awt.Component; 
+import java.awt.*;
+import java.awt.Desktop;
+import java.net.URI;
 import javax.swing.*; 
-import java.awt.Font;
-import javax.swing.border.EmptyBorder;
 import java.lang.ProcessBuilder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +14,6 @@ public class ApplicationRunnerGUI extends JFrame {
     // JButtons and JLabels 
     static JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14;
     static JLabel l;
-    private JPanel mainPanel, subPanel1, subPanel2;
 
     public static void main(String[] args) {        
         // Create a new frame 
@@ -33,14 +30,10 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                int exitCode = p.waitFor();
-                } catch (IOException e1) {
+                    java.awt.Desktop.getDesktop().browse(new java.net.URI("http://192.168.0.201:8787"));
+                } catch (Exception e1) {
                     System.out.println("Could not open RStudio!");
-                } catch (InterruptedException e2) {
-                    System.out.println("Could not open RStudio!");
-                }
+                } 
             }
         }); 
 
@@ -51,7 +44,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Spyder!");
                 } catch (InterruptedException e2) {
@@ -67,7 +60,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open IBM SAS!");
                 } catch (InterruptedException e2) {
@@ -83,7 +76,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Git!");
                 } catch (InterruptedException e2) {
@@ -99,7 +92,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Jupyter Notebook!");
                 } catch (InterruptedException e2) {
@@ -115,7 +108,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Orange!");
                 } catch (InterruptedException e2) {
@@ -131,7 +124,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Visual Studio Code IDE!");
                 } catch (InterruptedException e2) {
@@ -147,7 +140,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Apache Hadoop!");
                 } catch (InterruptedException e2) {
@@ -163,7 +156,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Apache Spark!");
                 } catch (InterruptedException e2) {
@@ -179,7 +172,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Tableau!");
                 } catch (InterruptedException e2) {
@@ -195,7 +188,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open SonarQube and SonarScanner binaries!");
                 } catch (InterruptedException e2) {
@@ -211,7 +204,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open TensorFlow!");
                 } catch (InterruptedException e2) {
@@ -227,7 +220,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Markdown!");
                 } catch (InterruptedException e2) {
@@ -243,7 +236,7 @@ public class ApplicationRunnerGUI extends JFrame {
                 try {
                     ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
                     Process p = pb.start();
-                int exitCode = p.waitFor();
+                    int exitCode = p.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Notepad++!");
                 } catch (InterruptedException e2) {
