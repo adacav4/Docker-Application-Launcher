@@ -30,7 +30,8 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    java.awt.Desktop.getDesktop().browse(new java.net.URI("http://localhost:8787"));
+                    ProcessBuilder pb = new ProcessBuilder("sh", "service_startup/rstudio_startup.sh");
+                    Process p = pb.start();
                 } catch (Exception e1) {
                     System.out.println(e1 + ": Could not open RStudio!");
                 } 

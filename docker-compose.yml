@@ -13,11 +13,12 @@ services:
     - rstudio
     ports:
     - "8080:8080"
-    command: bash -c "cd /home && sh run.sh"
-    # stdin_open: true 
-    # tty: true
+    # command: bash -c "cd /home && sh run.sh"
+    stdin_open: true 
+    tty: true
 
   rstudio:
+    # build: ./rstudio
     image: rocker/rstudio
     environment:
     - USER=rstudio
