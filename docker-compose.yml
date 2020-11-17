@@ -19,11 +19,11 @@ services:
     stdin_open: true 
     tty: true
 
-  # rstudio:
-  #   build: ./rstudio
-  #   # image: rocker/rstudio
-  #   environment:
-  #   - USER=rstudio
-  #   - PASSWORD=qwerty
-  #   ports:
-  #   - "8787:8787"
+  rstudio:
+    build: ./rstudio
+    # image: rocker/rstudio
+    environment:
+    - USER=rstudio
+    - PASSWORD=qwerty
+    ports:
+    - "8787:8787"
