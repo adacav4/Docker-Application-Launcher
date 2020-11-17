@@ -30,10 +30,10 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("sh", "service_startup/rstudio_startup.sh");
-                    Process p = pb.start();
+                    Process process = Runtime.getRuntime().exec("chromium http://localhost:8787");
+                    int exitCode = process.waitFor();
                 } catch (Exception e1) {
-                    System.out.println(e1 + ": Could not open RStudio!");
+                    System.out.println("Could not open RStudio!");
                 } 
             }
         }); 
@@ -75,9 +75,8 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
+                    Process process = Runtime.getRuntime().exec("xterm");
+                    int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Git!");
                 } catch (InterruptedException e2) {
