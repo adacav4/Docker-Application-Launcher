@@ -2,14 +2,14 @@ FROM rocker/rstudio
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ENV DISPLAY=10.215.211.156:0
+ENV DISPLAY=:0
 ENV USER=rstudio
 ENV PASSWORD=qwerty
-
+# Xorg needed (ubuntu java container already installs xorg)?
 RUN apt-get update && apt-get -y install wget xorg xdg-utils xvfb x11vnc
 
-# Install firefox
-# RUN apt-get -f install firefox
+# Install chromium
+RUN apt-get -f install chromium-browser
 
 # open a Firefox window
-# RUN xdg-open http://localhost:8787
+RUN chromium http://localhost:8787
