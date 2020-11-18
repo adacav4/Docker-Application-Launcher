@@ -16,7 +16,7 @@ RUN apt-get update && apt-get -y install wget xorg xdg-utils xvfb x11vnc
 RUN apt-get -y -f install firefox
 
 # Open a Firefox window (just for testing) 
-# RUN xdg-open http://localhost:8787
+RUN xdg-open http://localhost:8787
 
 
 ### DOESN'T WORK  ###

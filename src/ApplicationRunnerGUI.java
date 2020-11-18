@@ -30,7 +30,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("chromium http://localhost:8787");
+                    Process process = Runtime.getRuntime().exec("docker build ./rstudio && docker run -p 8787:8787");
                     int exitCode = process.waitFor();
                 } catch (Exception e1) {
                     System.out.println("Could not open RStudio!");
