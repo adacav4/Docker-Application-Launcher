@@ -9,7 +9,7 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     environment:
     - TERM=xterm
-    - DISPLAY=192.168.0.20:0
+    - DISPLAY=192.168.0.201:0
     # depends_on:
     # - rstudio
     ports:
