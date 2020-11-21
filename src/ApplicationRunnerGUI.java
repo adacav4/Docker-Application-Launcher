@@ -164,7 +164,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:8850");
+                    Process process = Runtime.getRuntime().exec("xdg-open https://sso.online.tableau.com/public/idp/SSO");
                     int exitCode = process.waitFor();
                 } catch (Exception e1) {
                     System.out.println(e1 + "Could not open Tableau!");
