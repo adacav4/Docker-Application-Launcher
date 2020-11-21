@@ -2,7 +2,7 @@ FROM rocker/rstudio
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ENV DISPLAY=192.168.0.20:0
+ENV DISPLAY=:0
 ENV USER=rstudio
 ENV PASSWORD=qwerty
 

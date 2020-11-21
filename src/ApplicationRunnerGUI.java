@@ -72,7 +72,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("docker run --rm -it git");
+                    Process process = Runtime.getRuntime().exec("xterm");
                     int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println(e1 + ": Could not open Git!");
@@ -87,9 +87,8 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("docker run --rm -it jupyter_notebook");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
+                    Process process = Runtime.getRuntime().exec("xdg-open http://localhost:8888");
+                    int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println(e1 + ": Could not open Jupyter Notebook!");
                 } catch (InterruptedException e2) {
@@ -135,9 +134,8 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("docker run --rm -it hadoop");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
+                    Process process = Runtime.getRuntime().exec("xterm");
+                    int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println(e1 + ": Could not open Apache Hadoop!");
                 } catch (InterruptedException e2) {
@@ -183,9 +181,8 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
+                    Process process = Runtime.getRuntime().exec("xdg-open http://localhost:9000");
+                    int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open SonarQube and SonarScanner binaries!");
                 } catch (InterruptedException e2) {
@@ -215,11 +212,10 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
+                    Process process = Runtime.getRuntime().exec("xdg-open http://localhost:12345");
+                    int exitCode = process.waitFor();
                 } catch (IOException e1) {
-                    System.out.println("Could not open Markdown!");
+                    System.out.println(e1 + "Could not open Markdown!");
                 } catch (InterruptedException e2) {
                     System.out.println("Could not open Markdown!");
                 }
