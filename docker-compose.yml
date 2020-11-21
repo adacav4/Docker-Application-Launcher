@@ -14,6 +14,8 @@ services:
     - DISPLAY=192.168.0.20:0
     depends_on:
     - rstudio
+    - orange
+    - tensorflow
     # mjd119 services
      # - spyder
      # - git
@@ -37,6 +39,27 @@ services:
     - PASSWORD=qwerty
     ports:
     - "8787:8787"
+
+  orange:
+    image: acopar/orange-docker
+    ports:
+    - "6901:6901"
+
+  tensorflow:
+    build: ./src/tensorflow
+    volumes:
+    - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+    - TERM=xterm
+    - DISPLAY=192.168.0.20:0
+
+    stdin_open: true 
+    tty: true
+
+  tableau:
+    image: pvtmert/tableau
+    ports:
+    - "8850:8850"    
 
   # Mjd119 services
     # Set variable from shell script here https://hub.docker.com/r/timcera/spyder-desktop-ubuntu

@@ -15,4 +15,13 @@ RUN apt-get update && apt-get install -y net-tools wget iputils-ping xorg xdg-ut
 RUN apt-get update
 RUN apt-get -y -f install firefox
 
+
+# Install Docker-In-Docker
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+RUN apt-key fingerprint 0EBFCD88
+RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+RUN apt-get update
+RUN apt-get -y install docker-ce
+
+
 #/private/tmp/com.apple.launchd.wwVsU0z4aA/org.macosforge.xquartz:0

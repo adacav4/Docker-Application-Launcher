@@ -103,14 +103,11 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
-                } catch (IOException e1) {
-                    System.out.println(e1 + ": Could not open Orange!");
-                } catch (InterruptedException e2) {
-                    System.out.println(e2 + ": Could not open Orange!");
-                }
+                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:6901");
+                    int exitCode = process.waitFor();
+                } catch (Exception e1) {
+                    System.out.println(e1 + "Could not open Orange!");
+                } 
             }
         }); 
 
@@ -167,14 +164,11 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
-                } catch (IOException e1) {
-                    System.out.println(e1 + ": Could not open Tableau!");
-                } catch (InterruptedException e2) {
-                    System.out.println(e2 + ": Could not open Tableau!");
-                }
+                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:8850");
+                    int exitCode = process.waitFor();
+                } catch (Exception e1) {
+                    System.out.println(e1 + "Could not open Tableau!");
+                } 
             }
         }); 
 
@@ -199,14 +193,11 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
-                } catch (IOException e1) {
-                    System.out.println("Could not open TensorFlow!");
-                } catch (InterruptedException e2) {
-                    System.out.println("Could not open TensorFlow!");
-                }
+                    Process process = Runtime.getRuntime().exec("/usr/bin/docker run -v /var/run/docker.sock:/var/run/docker.sock tensorflow");
+                    int exitCode = process.waitFor();
+                } catch (Exception e1) {
+                    System.out.println(e1 + "Could not open TensorFlow!");
+                } 
             }
         }); 
 
