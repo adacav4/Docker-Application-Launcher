@@ -30,7 +30,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("/usr/bin/docker build ./rstudio && /usr/bin/docker run -p 8787:8787");
+                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:8787");
                     int exitCode = process.waitFor();
                 } catch (Exception e1) {
                     System.out.println(e1 + "Could not open RStudio!");
@@ -59,14 +59,11 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
-                } catch (IOException e1) {
-                    System.out.println("Could not open IBM SAS!");
-                } catch (InterruptedException e2) {
-                    System.out.println("Could not open IBM SAS!");
-                }
+                    Process process = Runtime.getRuntime().exec("xdg-open https://welcome.oda.sas.com/login");
+                    int exitCode = process.waitFor();
+                } catch (Exception e1) {
+                    System.out.println(e1 + ": Could not open IBM SAS!");
+                } 
             }
         }); 
 
@@ -78,9 +75,9 @@ public class ApplicationRunnerGUI extends JFrame {
                     Process process = Runtime.getRuntime().exec("docker run --rm -it git");
                     int exitCode = process.waitFor();
                 } catch (IOException e1) {
-                    System.out.println("Could not open Git!");
+                    System.out.println(e1 + ": Could not open Git!");
                 } catch (InterruptedException e2) {
-                    System.out.println("Could not open Git!");
+                    System.out.println(e2 + ": Could not open Git!");
                 }
             }
         }); 
@@ -94,9 +91,9 @@ public class ApplicationRunnerGUI extends JFrame {
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
-                    System.out.println("Could not open Jupyter Notebook!");
+                    System.out.println(e1 + ": Could not open Jupyter Notebook!");
                 } catch (InterruptedException e2) {
-                    System.out.println("Could not open Jupyter Notebook!");
+                    System.out.println(e2 + ": Could not open Jupyter Notebook!");
                 }
             }
         }); 
@@ -110,9 +107,9 @@ public class ApplicationRunnerGUI extends JFrame {
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
-                    System.out.println("Could not open Orange!");
+                    System.out.println(e1 + ": Could not open Orange!");
                 } catch (InterruptedException e2) {
-                    System.out.println("Could not open Orange!");
+                    System.out.println(e2 + ": Could not open Orange!");
                 }
             }
         }); 
@@ -126,9 +123,9 @@ public class ApplicationRunnerGUI extends JFrame {
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
-                    System.out.println("Could not open Visual Studio Code IDE!");
+                    System.out.println(e1 + ": Could not open Visual Studio Code IDE!");
                 } catch (InterruptedException e2) {
-                    System.out.println("Could not open Visual Studio Code IDE!");
+                    System.out.println(e2 + ": Could not open Visual Studio Code IDE!");
                 }
             }
         }); 
@@ -142,9 +139,9 @@ public class ApplicationRunnerGUI extends JFrame {
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
-                    System.out.println("Could not open Apache Hadoop!");
+                    System.out.println(e1 + ": Could not open Apache Hadoop!");
                 } catch (InterruptedException e2) {
-                    System.out.println("Could not open Apache Hadoop!");
+                    System.out.println(e2 + ": Could not open Apache Hadoop!");
                 }
             }
         }); 
@@ -158,9 +155,9 @@ public class ApplicationRunnerGUI extends JFrame {
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
-                    System.out.println("Could not open Apache Spark!");
+                    System.out.println(e1 + ": Could not open Apache Spark!");
                 } catch (InterruptedException e2) {
-                    System.out.println("Could not open Apache Spark!");
+                    System.out.println(e2 + ": Could not open Apache Spark!");
                 }
             }
         }); 
@@ -174,9 +171,9 @@ public class ApplicationRunnerGUI extends JFrame {
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
-                    System.out.println("Could not open Tableau!");
+                    System.out.println(e1 + ": Could not open Tableau!");
                 } catch (InterruptedException e2) {
-                    System.out.println("Could not open Tableau!");
+                    System.out.println(e2 + ": Could not open Tableau!");
                 }
             }
         }); 

@@ -11,14 +11,15 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     environment:
     - TERM=xterm
-    - DISPLAY=:0
+    - DISPLAY=192.168.0.20:0
     depends_on:
+    - rstudio
     # mjd119 services
-     - spyder
-     - git
-     - jupyter_notebook
-     - markdown
-     - vscode
+     # - spyder
+     # - git
+     # - jupyter_notebook
+     # - markdown
+     # - vscode
 #     - hadoop
 #     - sonarqube_and_sonarscanner
     ports:
@@ -28,43 +29,43 @@ services:
     stdin_open: true 
     tty: true
 
-  # rstudio:
-  #   build: ./rstudio
-  #   # image: rocker/rstudio
-  #   environment:
-  #   - USER=rstudio
-  #   - PASSWORD=qwerty
-  #   ports:
-  #   - "8787:8787"
+  rstudio:
+    build: ./src/rstudio
+    # image: rocker/rstudio
+    environment:
+    - USER=rstudio
+    - PASSWORD=qwerty
+    ports:
+    - "8787:8787"
 
   # Mjd119 services
     # Set variable from shell script here https://hub.docker.com/r/timcera/spyder-desktop-ubuntu
-    spyder:
-      build: ./spyder
-      volumes:
-        - ./src:/home
-        - /tmp/.X11-unix:/tmp/.X11-unix
-      environment:
-        - DISPLAY=:0
-        - HHHOME=${HOME}
-    git: # Run docker run alpine/git <command like clone, pull, commit> <arguments>
-      build: ./git
-      volumes:
-        - ./src:/root
-        - $(pwd):/git
-        - /tmp/.X11-unix:/tmp/.X11-unix
-    jupyter_notebook:
-      build: ./jupyter_notebook
-      ports: 8888:8888
-      volumes:
-        - /tmp/.X11-unix:/tmp/.X11-unix
-    markdown:
-      build: ./markdown
-      ports:
-        - 12345:80
-      volumes:
-        - /tmp/.X11-unix:/tmp/.X11-unix
-    vscode:
-      build: ./vscode
-      volumes:
-        - /tmp/.X11-unix:/tmp/.X11-unix
+    # spyder:
+    #   build: ./spyder
+    #   volumes:
+    #     - ./src:/home
+    #     - /tmp/.X11-unix:/tmp/.X11-unix
+    #   environment:
+    #     - DISPLAY=:0
+    #     - HHHOME=${HOME}
+    # git: # Run docker run alpine/git <command like clone, pull, commit> <arguments>
+    #   build: ./git
+    #   volumes:
+    #     - ./src:/root
+    #     - $(pwd):/git
+    #     - /tmp/.X11-unix:/tmp/.X11-unix
+    # jupyter_notebook:
+    #   build: ./jupyter_notebook
+    #   ports: 8888:8888
+    #   volumes:
+    #     - /tmp/.X11-unix:/tmp/.X11-unix
+    # markdown:
+    #   build: ./markdown
+    #   ports:
+    #     - 12345:80
+    #   volumes:
+    #     - /tmp/.X11-unix:/tmp/.X11-unix
+    # vscode:
+    #   build: ./vscode
+    #   volumes:
+    #     - /tmp/.X11-unix:/tmp/.X11-unix
