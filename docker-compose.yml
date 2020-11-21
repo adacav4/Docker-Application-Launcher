@@ -16,6 +16,7 @@ services:
     - rstudio
     - orange
     - tensorflow
+    - tableau
     # mjd119 services
      # - spyder
      # - git
@@ -52,14 +53,19 @@ services:
     environment:
     - TERM=xterm
     - DISPLAY=192.168.0.20:0
-
     stdin_open: true 
     tty: true
 
   tableau:
     image: pvtmert/tableau
+    volumes:
+    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
     ports:
-    - "8850:8850"    
+    - "8850:8850"
+    stdin_open: true 
+    tty: true
+
 
   # Mjd119 services
     # Set variable from shell script here https://hub.docker.com/r/timcera/spyder-desktop-ubuntu
