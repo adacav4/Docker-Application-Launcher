@@ -4,54 +4,43 @@ version: '3.0'
 
 services:
   java:
-      build: ./src
-      volumes:
-      - ./src:/home
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - /var/run/docker.sock:/var/run/docker.sock
-      environment:
-      - TERM=xterm
-      - DISPLAY=:0
-      depends_on:
-      - rstudio
-      # mjd119 services
-       # - spyder
-       # - git
-      - jupyter_notebook
-      - markdown
-       # - vscode
-  #     - hadoop
-  #     - sonarqube_and_sonarscanner
-      ports:
-      - "8080:8080"
-      # command: bash -c "docker run "
-      command: bash -c "cd /home && sh run.sh"
-      stdin_open: true
-      tty: true
+    build: ./src
+    volumes:
+    - ./src:/home
+    - /tmp/.X11-unix:/tmp/.X11-unix
+    - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+    - TERM=xterm
+    - DISPLAY=192.168.0.20:0
+    depends_on:
+    - rstudio
+    # - spyder
+    # - git
+    - jupyter_notebook
+    - markdown
+    # - vscode
+    # - hadoop
+    # - sonarqube_and_sonarscanner
+    ports:
+    - "8080:8080"
+    # command: bash -c "docker run "
+    command: bash -c "cd /home && sh run.sh"
+    stdin_open: true
+    tty: true
+
   rstudio:
-      build: ./src/rstudio
-      # image: rocker/rstudio
-      environment:
-      - USER=rstudio
-      - PASSWORD=qwerty
-      ports:
-      - "8787:8787"
-    # Mjd119 services
-      # Set variable from shell script here https://hub.docker.com/r/timcera/spyder-desktop-ubuntu
-  #     spyder:
-  #       build: ./src/spyder
-  #       volumes:
-  #         - ./src:/home
-  #         - /tmp/.X11-unix:/tmp/.X11-unix
-  #       environment:
-  #         - DISPLAY=:0
-  #         - HHHOME=${HOME}
-      # git: # Run docker run alpine/git <command like clone, pull, commit> <arguments>
-      #   build: ./src/git
-      #   volumes:
-      #     - ./src:/root
-      #     - $(pwd):/git
-      #     - /tmp/.X11-unix:/tmp/.X11-unix
+    build: ./src/rstudio
+    environment:
+    - USER=rstudio
+    - PASSWORD=qwerty
+    ports:
+    - "8787:8787"
+
+  orange:
+    image: acopar/orange-docker
+    ports:
+    - "6901:6901"
+    
   jupyter_notebook:
     build: ./src/jupyter_notebook
     environment:
@@ -59,6 +48,7 @@ services:
       - PASSWORD=qwerty
     ports:
       - "8888:8888"
+
   markdown:
     build: ./src/markdown
     environment:
@@ -66,7 +56,22 @@ services:
       - PASSWORD=qwerty
     ports:
       - "12345:80"
-    # vscode:
-    #   build: ./src/vscode
-    #   volumes:
-    #     - /tmp/.X11-unix:/tmp/.X11-unix
+
+
+# Mjd119 services
+# Set variable from shell script here https://hub.docker.com/r/timcera/spyder-desktop-ubuntu
+
+  # spyder:
+  #   build: ./src/spyder
+  #   volumes:
+  #   - ./src:/home
+  #   - /tmp/.X11-unix:/tmp/.X11-unix
+  #   environment:
+  #   - DISPLAY=:0
+  #   - HHHOME=${HOME}
+  # git: # Run docker run alpine/git <command like clone, pull, commit> <arguments>
+  #   build: ./src/git
+  #   volumes:
+  #   - ./src:/root
+  #   - $(pwd):/git
+  #   - /tmp/.X11-unix:/tmp/.X11-unix

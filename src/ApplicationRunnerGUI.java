@@ -87,7 +87,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("xdg-open http://localhost:8888");
+                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:8888");
                     int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println(e1 + ": Could not open Jupyter Notebook!");
@@ -102,14 +102,11 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
-                } catch (IOException e1) {
-                    System.out.println(e1 + ": Could not open Orange!");
-                } catch (InterruptedException e2) {
-                    System.out.println(e2 + ": Could not open Orange!");
-                }
+                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:6901");
+                    int exitCode = process.waitFor();
+                } catch (Exception e1) {
+                    System.out.println(e1 + "Could not open Orange!");
+                } 
             }
         }); 
 
@@ -165,14 +162,11 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
-                } catch (IOException e1) {
-                    System.out.println(e1 + ": Could not open Tableau!");
-                } catch (InterruptedException e2) {
-                    System.out.println(e2 + ": Could not open Tableau!");
-                }
+                    Process process = Runtime.getRuntime().exec("xdg-open https://sso.online.tableau.com/public/idp/SSO");
+                    int exitCode = process.waitFor();
+                } catch (Exception e1) {
+                    System.out.println(e1 + "Could not open Tableau!");
+                } 
             }
         }); 
 
@@ -181,7 +175,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("xdg-open http://localhost:9000");
+                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:9000");
                     int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open SonarQube and SonarScanner binaries!");
@@ -196,14 +190,11 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
-                    Process p = pb.start();
-                    int exitCode = p.waitFor();
-                } catch (IOException e1) {
-                    System.out.println("Could not open TensorFlow!");
-                } catch (InterruptedException e2) {
-                    System.out.println("Could not open TensorFlow!");
-                }
+                    Process process = Runtime.getRuntime().exec("xterm -hold -e /usr/bin/docker run -it --rm tensorflow/tensorflow:latest");
+                    int exitCode = process.waitFor();
+                } catch (Exception e1) {
+                    System.out.println(e1 + "Could not open TensorFlow!");
+                } 
             }
         }); 
 
@@ -212,7 +203,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("xdg-open http://localhost:12345");
+                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:12345");
                     int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println(e1 + "Could not open Markdown!");
