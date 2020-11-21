@@ -193,7 +193,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("/usr/bin/docker run -v /var/run/docker.sock:/var/run/docker.sock tensorflow");
+                    Process process = Runtime.getRuntime().exec("xterm -hold -e /usr/bin/docker run -it --rm tensorflow/tensorflow:latest");
                     int exitCode = process.waitFor();
                 } catch (Exception e1) {
                     System.out.println(e1 + "Could not open TensorFlow!");
