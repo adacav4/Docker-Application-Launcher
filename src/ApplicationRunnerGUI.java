@@ -30,10 +30,10 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("docker build ./rstudio && docker run -p 8787:8787");
+                    Process process = Runtime.getRuntime().exec("/usr/bin/docker build ./rstudio && /usr/bin/docker run -p 8787:8787");
                     int exitCode = process.waitFor();
                 } catch (Exception e1) {
-                    System.out.println("Could not open RStudio!");
+                    System.out.println(e1 + "Could not open RStudio!");
                 } 
             }
         }); 
@@ -43,7 +43,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
+                    ProcessBuilder pb = new ProcessBuilder("docker run --rm -it spyder");
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
@@ -75,7 +75,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("xterm");
+                    Process process = Runtime.getRuntime().exec("docker run --rm -it git");
                     int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open Git!");
@@ -90,7 +90,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
+                    ProcessBuilder pb = new ProcessBuilder("docker run --rm -it jupyter_notebook");
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
@@ -122,7 +122,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
+                    ProcessBuilder pb = new ProcessBuilder("docker run --rm -it vscode");
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
@@ -138,7 +138,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("open", "/Applications/Calculator.app");
+                    ProcessBuilder pb = new ProcessBuilder("docker run --rm -it hadoop");
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
