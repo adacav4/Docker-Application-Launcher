@@ -14,26 +14,22 @@ services:
     - DISPLAY=192.168.0.20:0
     depends_on:
     - rstudio
-    - orange
-    # - tensorflow
-    # mjd119 services
-     # - spyder
-     # - git
-     # - jupyter_notebook
-     # - markdown
-     # - vscode
-#     - hadoop
-#     - sonarqube_and_sonarscanner
+    # - spyder
+    # - git
+    - jupyter_notebook
+    - markdown
+    # - vscode
+    # - hadoop
+    # - sonarqube_and_sonarscanner
     ports:
     - "8080:8080"
     # command: bash -c "docker run "
     command: bash -c "cd /home && sh run.sh"
-    stdin_open: true 
+    stdin_open: true
     tty: true
 
   rstudio:
     build: ./src/rstudio
-    # image: rocker/rstudio
     environment:
     - USER=rstudio
     - PASSWORD=qwerty
@@ -44,54 +40,38 @@ services:
     image: acopar/orange-docker
     ports:
     - "6901:6901"
+    
+  jupyter_notebook:
+    build: ./src/jupyter_notebook
+    environment:
+      - USER=root
+      - PASSWORD=qwerty
+    ports:
+      - "8888:8888"
 
-  # tensorflow:
-  #   build: ./src/tensorflow
+  markdown:
+    build: ./src/markdown
+    environment:
+      - USER=root
+      - PASSWORD=qwerty
+    ports:
+      - "12345:80"
+
+
+# Mjd119 services
+# Set variable from shell script here https://hub.docker.com/r/timcera/spyder-desktop-ubuntu
+
+  # spyder:
+  #   build: ./src/spyder
   #   volumes:
+  #   - ./src:/home
   #   - /tmp/.X11-unix:/tmp/.X11-unix
   #   environment:
-  #   - TERM=xterm
-  #   - DISPLAY=192.168.0.20:0
-  #   stdin_open: true 
-  #   tty: true
-
-  # tableau:
-  #   image: pvtmert/tableau
+  #   - DISPLAY=:0
+  #   - HHHOME=${HOME}
+  # git: # Run docker run alpine/git <command like clone, pull, commit> <arguments>
+  #   build: ./src/git
   #   volumes:
-  #   - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  #   privileged: true
-  #   ports:
-  #   - "8850:8850"
-
-
-  # Mjd119 services
-    # Set variable from shell script here https://hub.docker.com/r/timcera/spyder-desktop-ubuntu
-    # spyder:
-    #   build: ./spyder
-    #   volumes:
-    #     - ./src:/home
-    #     - /tmp/.X11-unix:/tmp/.X11-unix
-    #   environment:
-    #     - DISPLAY=:0
-    #     - HHHOME=${HOME}
-    # git: # Run docker run alpine/git <command like clone, pull, commit> <arguments>
-    #   build: ./git
-    #   volumes:
-    #     - ./src:/root
-    #     - $(pwd):/git
-    #     - /tmp/.X11-unix:/tmp/.X11-unix
-    # jupyter_notebook:
-    #   build: ./jupyter_notebook
-    #   ports: 8888:8888
-    #   volumes:
-    #     - /tmp/.X11-unix:/tmp/.X11-unix
-    # markdown:
-    #   build: ./markdown
-    #   ports:
-    #     - 12345:80
-    #   volumes:
-    #     - /tmp/.X11-unix:/tmp/.X11-unix
-    # vscode:
-    #   build: ./vscode
-    #   volumes:
-    #     - /tmp/.X11-unix:/tmp/.X11-unix
+  #   - ./src:/root
+  #   - $(pwd):/git
+  #   - /tmp/.X11-unix:/tmp/.X11-unix
