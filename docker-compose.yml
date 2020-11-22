@@ -11,7 +11,7 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     environment:
     - TERM=xterm
-    - DISPLAY=192.168.0.20:0
+    - DISPLAY=192.168.1.20:0
     depends_on:
     - rstudio
     - spyder
@@ -52,20 +52,22 @@ services:
       - PASSWORD=qwerty
     ports:
       - "12345:80"
-
+# Solved path issue
+# https://stackoverflow.com/questions/59904878/docker-compose-volume-name-is-too-short-names-should-be-at-least-two-alphanume
   vscode:
     image: codercom/code-server
     volumes: 
-    - $PWD:/home/coder/project
+    - $PWD/:/home/coder/project
     user: "${UID}:${GID}"
     ports:
     - "8080:8080"
-
+# Solved path issue
+# https://stackoverflow.com/questions/59904878/docker-compose-volume-name-is-too-short-names-should-be-at-least-two-alphanume
   # Set variable from shell script here https://hub.docker.com/r/timcera/spyder-desktop-ubuntu
   spyder:
     image: timcera/spyder-desktop-ubuntu
     volumes:
-    - ${HOME}:/home/${USER_NAME}
+    - ${HOME}/:/home/user
     - /tmp/.X11-unix:/tmp/.X11-unix
     environment:
     - DISPLAY=192.168.0.20:0
