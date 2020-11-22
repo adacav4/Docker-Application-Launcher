@@ -26,7 +26,7 @@ Developed by: Adarsh Cavale and Matthew Dodson
 
 
 
-## Configuration and Dependencies ##
+## Dependencies ##
 
 You need the following applications installed on your computer to run this Docker application:
 - Docker Desktop
@@ -36,6 +36,7 @@ You need the following applications installed on your computer to run this Docke
 - Xming (Windows) or XQuartz (Mac OS)
   - You need this to perform X-forwarding. We go into further detail in how to perform this in later steps. If Wayland is your default display server, you must install xorg in your default package distribution manager (e.g. apt, dnf, zippyr) and run a session of dnf.
 
+## Configuration ##
 
 In order to configure this application, you must do the following:
 
