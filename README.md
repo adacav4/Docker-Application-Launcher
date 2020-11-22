@@ -154,7 +154,7 @@ The Tableau service is set up just like IBM SAS. We were allowed to use a define
 
 
 #### SonarQube & SonarScanner ####
-Matt can you fill this in?
+The sonarqube service starts as a service container, but the button on the java gui does not do what is intended. We intended to run the sonarcanner program once and open a browser to see the results. One can open a browser outside of docker to http://host.docker.internal:9000 (http://localhost:9000 on Linux) to see information about the sonarqube server. 
 
 
 
