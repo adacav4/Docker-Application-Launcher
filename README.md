@@ -32,9 +32,9 @@ You need the following applications installed on your computer to run this Docke
 - Docker Desktop
   - You will need this to access passwords for some headless browser applications that store their passwords in config files on their specific containers.
 - Eclipse
-  - If you have a Linux machine, you will need to change your URL for the headless browser applications and re-compile the JAR file. We go more into detail further down in the README.
+  - If you have a Linux machine, you will need to change your URL for the headless browser applications and re-compile the JAR file. We go more into detail further down in the README. Another option is to replace `docker.host.internal` with `localhost` in the address bar and reload the page in the browser.
 - Xming (Windows) or XQuartz (Mac OS)
-  - You need this to perform X-forwarding. We go into further detail in how to perform this in later steps. If Wayland is your default display server, you must install xorg in your default package distribution manager (e.g. apt, dnf, zippyr) and run a session of dnf.
+  - You need this to perform X-forwarding. We go into further detail in how to perform this in later steps. If Wayland is your default display server, you must install xorg in your default package distribution manager (e.g. apt, dnf, zippyr) and run an xorg session (e.g. desktop environment, window manager).
 
 ## Configuration ##
 
@@ -45,8 +45,8 @@ In order to configure this application, you must do the following:
   - On Linux, open your Terminal window, execute the command `xhost +` to allow network connections to use the `$DISPLAY` environment variable.
   - On Windows, make sure Xming is running and add your local IP address to the `"C:\Program Files (x86)\Xming\X0.hosts"` (default installation location for Xming) file
   
-- Then, open the Git repository and change the `$DISPLAY` variable to `:0` on a Linux machine, and `{your local IP address}:0` for Mac OS and Windows machines for the following files in this repository:
-  - `docker-compose.yml`: lines 14 and 71
+- Then, open the Git repository and change the `$DISPLAY` variable to `:0` on a Linux machine, or `{your local IP address}:0` for Mac OS and Windows machines for the following files in this repository:
+  - `docker-compose.yml` lines 14 and 76
   - `src/rstudio/Dockerfile` line 5
   - `src/Dockerfile` line 7
   
@@ -59,6 +59,7 @@ Just to be safe, change the `$DISPLAY` variable according to your machine everyw
 If you updated the file `ApplicationRunnerGUI.java` to change `host.docker.internal` to `localhost`, execute the following steps to create a new jar file:
 
 1. Download and open Eclipse IDE.
+2. Create a new project and specify the execution environment JRE version as `JavaSE-1.8`
 2. Copy the `.java` file into a new project - create a new Class.
 3. Save the file in any preferred location.
 4. Check to see if there are any errors (warnings are fine).
@@ -82,7 +83,7 @@ This service is the "main" service of the entire application. The GUI provides b
 
 #### RStudio ####
 
-RStudio, and many of the browser-hosted services included in this repository, runs on a headless instance of Firefox on port `8787`. When you click on the button to access RStudio, a Firefox window (hosted on either the Java GUI container or your host machine) will pop up. The username is `rstudio` and the password is `qwerty`, but you are able to change this in `docker-compose.yml` in the `rstudio` service.
+RStudio, and many of the browser-hosted services included in this repository, runs on a headless instance of Firefox on port `8787`. When you click on the button to access RStudio, a Firefox window (hosted on either the Java GUI container or your host machine if you are using Linux) will pop up. The username is `rstudio` and the password is `qwerty`, but you are able to change this in `docker-compose.yml` in the `rstudio` service.
 
 
 #### Spyder **(Not implemented)** ####
@@ -92,12 +93,12 @@ Spyder has not been implemented.
 
 #### IBM SAS ####
 
-IBM works in the same way as RStudio, however instead of running a container, we were allowed to use a link to redirect the user to upon clicking the button. The link is: https://welcome.oda.sas.com/login. You would need to have an existing log-in to use the service. 
+IBM SAS works in the same way as RStudio, however instead of running a container, we were allowed to use a link to redirect the user to upon clicking the button. The link is: https://welcome.oda.sas.com/login. You would need to have an existing log-in to use the service. 
 
 
 #### Git ####
 
-Git opens on an xterm window. we first build the docker image from it's dockerfile in `src/git/Dockerfile` upon start-up of the Java GUI container. Then, once the "Git" button is clicked, we run the docker container on an xterm session and we are able to use that xterm session like one would in Git Bash.
+Git opens on an xterm window. we first build the docker image from its dockerfile in `src/git/Dockerfile` upon start-up of the Java GUI container. Then, once the "Git" button is clicked, we run the docker container on an xterm session and we are able to use that xterm session like one would in Git Bash.
 
 
 #### Jupyter Notebook ####
