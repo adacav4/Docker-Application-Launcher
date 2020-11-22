@@ -19,6 +19,7 @@ services:
     - markdown
     - vscode
     # - hadoop
+    # - spark
     - sonarqube
     command: bash -c "/usr/bin/docker pull tensorflow/tensorflow:latest && docker build -t git-image /home/git && cd /home && sh run.sh"
     stdin_open: true
@@ -40,18 +41,19 @@ services:
   jupyter_notebook:
     build: ./src/jupyter_notebook
     environment:
-      - USER=root
-      - PASSWORD=qwerty
+    - USER=root
+    - PASSWORD=qwerty
     ports:
-      - "8888:8888"
+    - "8888:8888"
 
   markdown:
     build: ./src/markdown
     environment:
-      - USER=root
-      - PASSWORD=qwerty
+    - USER=root
+    - PASSWORD=qwerty
     ports:
-      - "12345:80"
+    - "12345:80"
+
 # Solved path issue
 # https://stackoverflow.com/questions/59904878/docker-compose-volume-name-is-too-short-names-should-be-at-least-two-alphanume
   vscode:
@@ -61,6 +63,7 @@ services:
     user: "${UID}:${GID}"
     ports:
     - "8080:8080"
+
 # Solved path issue
 # https://stackoverflow.com/questions/59904878/docker-compose-volume-name-is-too-short-names-should-be-at-least-two-alphanume
   # Set variable from shell script here https://hub.docker.com/r/timcera/spyder-desktop-ubuntu
@@ -74,6 +77,7 @@ services:
     - HHHOME=${HOME}
     stdin_open: true
     tty: true
+
   sonarqube:
     container_name: sonarqube
     image: sonarqube
