@@ -43,7 +43,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("docker run --rm -it spyder");
+                    ProcessBuilder pb = new ProcessBuilder("./spyder");
                     Process p = pb.start();
                     int exitCode = p.waitFor();
                 } catch (IOException e1) {
@@ -115,11 +115,11 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder p = new ProcessBuilder("docker run --rm -it --net=\"host\" -e host.docker.internal -v /tmp/.X11-unix:/tmp/.X11-unix");
-                    int exitCode = p.waitFor();
+                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:8080");
+                    int exitCode = process.waitFor();
                 } catch (Exception e1) {
                     System.out.println(e1 + "Could not open Visual Studio Code IDE!");
-                }
+                } 
             }
         }); 
 
