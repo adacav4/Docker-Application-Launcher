@@ -77,7 +77,7 @@ To run the application, `cd` just inside the Git repository and run `docker-comp
 
 #### Main Java GUI ####
 
-This service is the "main" service of the entire application. The GUI provides buttons that can be used to access each working application either through a headless web browser, Firefox, or through xterm. Both of these are preemptively installed on the Java GUI container. We used `Process` to run bash commands to run `xdg-open` (which opens Firefox) and to run a service container (built during the launch of the GUI) on xterm.
+This service is the "main" service of the entire application. The GUI provides buttons that can be used to access each working application either through a headless web browser, Firefox, or through xterm. Both of these are preemptively installed on the Java GUI container. We used the Java class, `Process`, to run bash commands to run `xdg-open` (which opens Firefox) and to run a service container (built during the launch of the GUI) on xterm.
 
 
 #### RStudio ####
@@ -87,7 +87,7 @@ RStudio, and many of the browser-hosted services included in this repository, ru
 
 #### Spyder **(Not implemented)** ####
 
-Spyder does not work on this application.
+Spyder has not been implemented.
 
 
 #### IBM SAS ####
