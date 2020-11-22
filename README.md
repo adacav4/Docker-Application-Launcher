@@ -135,7 +135,7 @@ cert: false
 
 
 
-#### Apache Hadoop **(Not implemented) ####
+#### Apache Hadoop **(Not implemented)** ####
 
 Apache Hadoop has not been implemented.
 
