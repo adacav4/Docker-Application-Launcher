@@ -15,16 +15,14 @@ services:
     depends_on:
     - rstudio
     # - spyder
-    # - git
     - jupyter_notebook
     - markdown
-    # - vscode
     # - hadoop
     # - sonarqube_and_sonarscanner
     ports:
     - "8080:8080"
     # command: bash -c "docker run "
-    command: bash -c "cd /home && sh run.sh"
+    command: bash -c "/usr/bin/docker pull tensorflow/tensorflow:latest && docker build -t git-image /home/git && docker pull sebmoule/docker-vscode && cd /home && sh run.sh"
     stdin_open: true
     tty: true
 

@@ -72,7 +72,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("xterm");
+                    Process process = Runtime.getRuntime().exec("xterm -hold -e /usr/bin/docker run -it --rm git-image:latest");
                     int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println(e1 + ": Could not open Git!");
@@ -115,13 +115,10 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ProcessBuilder pb = new ProcessBuilder("docker run --rm -it vscode");
-                    Process p = pb.start();
+                    ProcessBuilder p = new ProcessBuilder("docker run --rm -it --net=\"host\" -e host.docker.internal -v /tmp/.X11-unix:/tmp/.X11-unix");
                     int exitCode = p.waitFor();
-                } catch (IOException e1) {
-                    System.out.println(e1 + ": Could not open Visual Studio Code IDE!");
-                } catch (InterruptedException e2) {
-                    System.out.println(e2 + ": Could not open Visual Studio Code IDE!");
+                } catch (Exception e1) {
+                    System.out.println(e1 + "Could not open Visual Studio Code IDE!");
                 }
             }
         }); 
