@@ -172,7 +172,7 @@ public class ApplicationRunnerGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:9000");
+                    Process process = Runtime.getRuntime().exec("xdg-open http://host.docker.internal:9000 && docker run -ti -v $PWD/:/usr/src --link sonarqube newtmitch/sonar-scanner");
                     int exitCode = process.waitFor();
                 } catch (IOException e1) {
                     System.out.println("Could not open SonarQube and SonarScanner binaries!");

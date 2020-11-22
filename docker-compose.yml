@@ -19,7 +19,7 @@ services:
     - markdown
     - vscode
     # - hadoop
-    # - sonarqube_and_sonarscanner
+    - sonarqube
     command: bash -c "/usr/bin/docker pull tensorflow/tensorflow:latest && docker build -t git-image /home/git && cd /home && sh run.sh"
     stdin_open: true
     tty: true
@@ -74,3 +74,11 @@ services:
     - HHHOME=${HOME}
     stdin_open: true
     tty: true
+  sonarqube:
+    container_name: sonarqube
+    image: sonarqube
+    ports:
+    - "9000:9000"
+    - "9092:9092"
+    
+    
